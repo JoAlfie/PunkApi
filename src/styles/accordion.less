@@ -1,0 +1,29 @@
+.accordion {
+	&__title {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		position: relative;
+		padding: 10px;
+		h1,
+		h2,
+		h3 {
+			margin: 0;
+		}
+
+		&::after {
+			content: '+';
+			position: absolute;
+			right: 20px;
+		}
+
+		.active-panel > & {
+			&::after {
+				content: '-';
+			}
+		}
+	}
+	&__panel {
+		padding: 20px;
+	}
+}
