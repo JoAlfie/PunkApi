@@ -4,11 +4,11 @@ const punkAPI8BeersURL = 'https://api.punkapi.com/v2/beers?per_page=8';
 const addBeersToCTAGrid = beers => {
 	return beers.map(beer => {
 		// create elements
-		let gridItem = createNode('div');
+		let gridItem = createNode('a');
 		let gridItemImage = createNode('img');
 		let gridItemTextContainer = createNode('div');
-		let gridItemTitle = createNode('h2');
-		let gridItemTagline = createNode('span');
+		let gridItemTitle = createNode('p');
+		let gridItemTagline = createNode('p');
 
 		// add classes
 		gridItem.classList.add('ctagrid__item', 'griditem');
@@ -16,6 +16,9 @@ const addBeersToCTAGrid = beers => {
 		gridItemTextContainer.classList.add('griditem__textContainer');
 		gridItemTitle.classList.add('griditem__title');
 		gridItemTagline.classList.add('griditem__tagline');
+
+		// add 'link' to cta
+		gridItem.href = '/';
 
 		// add image
 		gridItemImage.src = beer.image_url;
