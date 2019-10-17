@@ -30,7 +30,7 @@ const Accordion = function() {
 	};
 
 	/**
-	 *
+	 * Set initial aria properties
 	 * @param {object} element = current accordion inner element
 	 */
 	const setAria = function(element) {
@@ -41,6 +41,17 @@ const Accordion = function() {
 		toggle.setAttribute('role', 'tab');
 		toggle.setAttribute('aria-expanded', false);
 		panel.setAttribute('role', 'tabpanel');
+	};
+
+	/**
+	 * Update aria properties
+	 * @param {object} element = current accordion inner element
+	 * @param {boolean} value = value of attribute (open/closed)
+	 */
+	const updateAria = function(element, value) {
+		const { toggleSelector } = options;
+		const toggle = element.querySelector(toggleSelector);
+		toggle.setAttribute('aria-expanded', value);
 	};
 
 	/**
