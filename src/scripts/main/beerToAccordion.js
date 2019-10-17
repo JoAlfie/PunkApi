@@ -9,7 +9,6 @@ const accordionPanelClass = 'accordion__panel';
  * @param {array} beers = beers returned from PunkAPI
  */
 const addBeersToAccordion = beers => {
-	console.log(beers);
 	return beers.map(beer => {
 		// create section container
 		let accordionSection = createNode('div');
@@ -59,4 +58,5 @@ fetch(punkAPIBeersURL)
 		addBeersToAccordion(data);
 		accordion.init('#accordion');
 	})
+	/* should probably do something if it goes wrong */
 	.catch(e => console.log(e));
