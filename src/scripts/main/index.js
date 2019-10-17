@@ -39,6 +39,10 @@ const addBeersToAccordion = beers => {
 		let accordionPanel = createNode('div');
 		accordionPanel.classList.add(accordionPanelClass, 'beer');
 		// and content
+		let image = createNode('img');
+		image.src = beer.image_url;
+		image.alt = '';
+		image.classList.add('beer__image');
 		let tagline = createNode('p');
 		tagline.classList.add('beer__tagline');
 		tagline.textContent = beer.tagline;
@@ -49,6 +53,7 @@ const addBeersToAccordion = beers => {
 			: '';
 		let descriptionText = beer.description + firstBrewed;
 		description.textContent = descriptionText;
+		append(accordionPanel, image);
 		append(accordionPanel, tagline);
 		append(accordionPanel, description);
 
