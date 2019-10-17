@@ -1,0 +1,120 @@
+/*
+ * html is set to 62.5% so that all the REM measurements are based on 10px sizing. 
+ * aka 1.5rem = 15px
+ * idea nabbed from Skeleton
+ */
+
+html {
+	font-size: 62.5%;
+}
+body {
+	margin: 0;
+	font-size: 1.6em; /* as per Skeleton - in ems due to chrome bug misinterpreting rems on body element */
+	line-height: 1.6;
+	font-weight: 400;
+	color: @mainfontcolor;
+	font-family: @mainfontfamily;
+}
+
+@media (min-width: @sm) {
+	body {
+		font-size: 1.8rem;
+	}
+}
+
+// TYPEOGRAPHY ------------------------------------
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	margin-top: 0;
+	margin-bottom: @text-margin-bottom;
+}
+h1,
+.h1 {
+	font-size: 4rem;
+	line-height: 1.2;
+}
+h2,
+.h2 {
+	font-size: 2.5rem;
+	line-height: 1.25;
+	letter-spacing: -0.1rem;
+}
+h3,
+.h3 {
+	font-size: 2.2rem;
+	line-height: 1.3;
+	letter-spacing: -0.1rem;
+}
+h4,
+.h4 {
+	font-size: 2rem;
+	line-height: 1.35;
+	letter-spacing: -0.08rem;
+}
+h5,
+.h5 {
+	font-size: 1.8rem;
+	line-height: 1.5;
+	letter-spacing: -0.05rem;
+}
+h6,
+.h6 {
+	font-size: 1.5rem;
+	line-height: 1.6;
+	letter-spacing: 0;
+}
+
+/* Larger than phablet */
+@media (min-width: @sm) {
+	h1,
+	.h1 {
+		font-size: 5.5rem;
+	}
+	h2,
+	.h2 {
+		font-size: 3.1rem;
+	}
+	h3,
+	.h3 {
+		font-size: 2.5rem;
+	}
+	h4,
+	.h4 {
+		font-size: 2rem;
+	}
+	h5,
+	.h5 {
+		font-size: 1.8rem;
+	}
+	h6,
+	.h6 {
+		font-size: 1.5rem;
+	}
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: @text-margin-bottom;
+}
+
+input,
+select,
+textarea {
+	border-radius: 0;
+	font-family: inherit;
+	color: inherit;
+}
+button {
+	font-family: inherit;
+}
