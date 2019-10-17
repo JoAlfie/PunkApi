@@ -18,7 +18,7 @@ task('doLess', function() {
 			)
 			.pipe(cssnano())
 			.pipe(rename('styles.min.css'))
-			.pipe(dest('./dist/stylesheets'));
+			.pipe(dest('./dist/styles'));
 		cb();
 	});
 });
