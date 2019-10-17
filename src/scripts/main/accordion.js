@@ -32,6 +32,7 @@ const Accordion = function() {
 
 		accordion.addEventListener('click', clickHandler);
 		accordion.addEventListener('keydown', keyDownHandler);
+		window.addEventListener('resize', resizeHandler);
 	};
 
 	/**
@@ -135,6 +136,25 @@ const Accordion = function() {
 				break;
 			}
 		}
+	};
+
+	const resizeHandler = function() {
+		const { elementClass, panelClass } = options;
+		const activeElements = accordion.querySelectorAll(
+			`.${elementClass}.active-panel`
+		);
+		activeElements.forEach(element => {
+			let panel = element.querySelector(`.${panelClass}`);
+			let height;
+			// set height to auto then get new height
+			requestAnimationFrame(() => {
+				panel.style.height = 'auto';
+				height = panel.offsetHeight;
+				requestAnimationFrame(() => {
+					panel.style.height = `${height}px`;
+				});
+			});
+		});
 	};
 
 	/**
