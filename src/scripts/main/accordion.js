@@ -5,22 +5,42 @@ const Accordion = function() {
 			toggleSeletor: '.accordion__title', // {string} = toggle button / title of accordion inner element
 			panelSelector: '.accordion__panel' // {string} = accordion inner element contents
 		},
-		accordion;
+		accordion,
+		accordionElements;
 
 	/**
-	 *
+	 * Init Accordion
 	 * @param {string} selector = selector of accordion element
 	 * @param {object} userOptions = user defined options to override defaults
 	 */
 	const init = function(selector, userOptions) {
 		// create options by extending defaults with the passed in arguments
 		if (userOptions && typeof userOptions === 'object') {
-			options = extendDefaults(defaults, arguments[0]);
+			options = extendDefaults(defaults, userOptions);
 		} else {
 			options = defaults;
 		}
 
 		accordion = document.querySelector(selector);
+		accordion.setAttribute('role', 'tablist');
+		accordionElements = accordion.querySelectorAll(options.elementSelector);
+		accordionElements.forEach(el => {
+			setAria(el);
+		});
+	};
+
+	/**
+	 *
+	 * @param {object} element = current accordion inner element
+	 */
+	const setAria = function(element) {
+		const { toggleSeletor, panelSelector } = options;
+		const toggle = element.querySelector(toggleSeletor);
+		const panel = element.querySelector(panelSelector);
+
+		toggle.setAttribute('role', 'tab');
+		toggle.setAttribute('aria-expanded', false);
+		panel.setAttribute('role', 'tabpanel');
 	};
 
 	/**
@@ -37,6 +57,9 @@ const Accordion = function() {
 		return defaults;
 	};
 
+	/**
+	 * Return accessible functions for Accordion module
+	 */
 	return {
 		init: init
 	};
