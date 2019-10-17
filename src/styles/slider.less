@@ -1,0 +1,54 @@
+.tns-outer {
+	button {
+		background: none;
+		border: 0;
+		font-size: 1.2rem;
+	}
+}
+.tns-controls {
+	display: flex;
+	justify-content: space-between;
+}
+.tns-nav {
+	display: flex;
+	justify-content: center;
+	margin-bottom: @text-margin-bottom;
+
+	button {
+		display: inline-block;
+		background-color: @black;
+		border-radius: 50%;
+		height: 14px;
+		width: 14px;
+		max-height: 14px;
+		max-width: 14px;
+		margin-left: 5px;
+		margin-right: 5px;
+		&.tns-nav-active {
+			background-color: @brewdogblue;
+		}
+	}
+}
+
+.slider {
+	&__slide {
+		padding: 20px;
+	}
+}
+
+@media (min-width: @md) {
+	.slider {
+		&__slide {
+			padding-top: 100px;
+			padding-bottom: 100px;
+		}
+	}
+}
+@media (min-width: @lg) {
+	.slider {
+		&__slide {
+			padding-top: 150px;
+			padding-bottom: 150px;
+		}
+	}
+}
