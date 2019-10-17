@@ -24,6 +24,14 @@
 		}
 	}
 	&__panel {
-		padding: 20px;
+		overflow: hidden;
+		transition: height 0.3s;
+
+		.has-js & {
+			visibility: hidden;
+		}
+		.has-js .active-panel & {
+			visibility: visible;
+		}
 	}
 }

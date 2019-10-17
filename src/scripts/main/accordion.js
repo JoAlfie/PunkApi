@@ -23,9 +23,11 @@ const Accordion = function() {
 
 		accordion = document.querySelector(selector);
 		accordion.setAttribute('role', 'tablist');
+		accordion.classList.add('has-js');
 		accordionElements = accordion.querySelectorAll(`.${options.elementClass}`);
 		accordionElements.forEach(el => {
 			setAria(el);
+			closePanel(el);
 		});
 
 		accordion.addEventListener('click', clickHandler);
@@ -54,7 +56,6 @@ const Accordion = function() {
 	const updateAria = function(element, value) {
 		const { toggleClass } = options;
 		const toggle = element.querySelector(`.${toggleClass}`);
-		console.log('updateAria', toggle);
 		toggle.setAttribute('aria-expanded', value);
 	};
 
@@ -63,7 +64,6 @@ const Accordion = function() {
 	 * @param {object} element = current accordian inner element
 	 */
 	const toggleElement = function(element) {
-		console.log(element);
 		const { panelClass } = options;
 		const panel = element.querySelector(`.${panelClass}`);
 		const height = panel.scrollHeight;
@@ -72,6 +72,17 @@ const Accordion = function() {
 
 		// toggle active class
 		element.classList.toggle('active-panel');
+
+		if (currentlyOpen) {
+			requestAnimationFrame(() => {
+				panel.style.height = 0;
+			});
+		} else {
+			requestAnimationFrame(() => {
+				panel.style.height = `${height}px`;
+			});
+		}
+
 		updateAria(element, ariaValue);
 	};
 
@@ -86,9 +97,20 @@ const Accordion = function() {
 				if (element.classList.contains('active-panel')) {
 					element.classList.remove('active-panel');
 				}
+				closePanel(element);
 				updateAria(element, false);
 			}
 		}
+	};
+
+	/**
+	 * Close element panel
+	 * @param {object} element = current inner accordion element
+	 */
+	const closePanel = function(element) {
+		const { panelClass } = options;
+		const panel = element.querySelector(`.${panelClass}`);
+		panel.style.height = 0;
 	};
 
 	/**
@@ -106,7 +128,6 @@ const Accordion = function() {
 					target.classList.contains(toggleClass) ||
 					target.parentNode.classList.contains(toggleClass)
 				) {
-					console.log('is toggle');
 					e.preventDefault();
 					closeAllElements(i);
 					toggleElement(accordionElements[i]);
