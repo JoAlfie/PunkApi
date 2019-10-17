@@ -1,2 +1,2 @@
-"use strict";var Accodion=void 0;
-"use strict";
+"use strict";function _typeof(o){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o})(o)}var Accordion=function(){var e={elementSelector:".accordion__section",toggleSeletor:".accordion__title",panelSelector:".accordion__panel"},n=function(o,t){for(var e in t)o[e]=t[e];return o};return{init:function(o,t){t&&"object"===_typeof(t)?n(e,o):e,document.querySelector(o)}}};
+"use strict";var accordion=Accordion();accordion.init("#accordion");
