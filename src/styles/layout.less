@@ -1,3 +1,14 @@
+/* smooth scrolling on the page */
+html {
+	scroll-behavior: smooth;
+}
+/* unless prefers-reduced-motion */
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
 header,
 main {
 	width: 90%;
