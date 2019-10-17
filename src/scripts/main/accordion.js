@@ -29,6 +29,7 @@ const Accordion = function() {
 		});
 
 		accordion.addEventListener('click', clickHandler);
+		accordion.addEventListener('keydown', keyDownHandler);
 	};
 
 	/**
@@ -120,8 +121,18 @@ const Accordion = function() {
 	 * @param {obect} e = click event
 	 */
 	const clickHandler = function(e) {
-		console.log('click handler');
 		callElement(e);
+	};
+
+	/**
+	 * Handle keydown event on accordion
+	 * @param {object} e = keydown event
+	 */
+	const keyDownHandler = function(e) {
+		const ENTER = 13;
+		if (e.keyCode === ENTER) {
+			callElement(e);
+		}
 	};
 
 	/**
