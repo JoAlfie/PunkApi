@@ -5,10 +5,30 @@
 		width: 100%;
 		position: relative;
 		padding: 10px;
+
+		background-color: @black;
+		color: @white;
+		border: none;
+		border-bottom: solid 1px @white;
+
 		h1,
 		h2,
 		h3 {
 			margin: 0;
+			font-weight: 400;
+			transition: margin 0.3s;
+		}
+
+		transition: background-color 0.3s;
+
+		&:hover,
+		&:focus {
+			background-color: @brewdogblue;
+			h1,
+			h2,
+			h3 {
+				margin-left: 10px;
+			}
 		}
 
 		&::after {
@@ -26,7 +46,9 @@
 	&__panel {
 		overflow: hidden;
 		transition: height 0.3s;
+		background-color: @brewdogcream;
 
+		/* only applied after js is definite, so content is still readable without js */
 		.has-js & {
 			visibility: hidden;
 		}
